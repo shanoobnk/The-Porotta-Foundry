@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Porotta Foundry | Madurai to Malabar</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-gold: #D4AF37;
+            --accent-orange: #FF6700;
+            --glow: 0 0 15px rgba(255, 103, 0, 0.4);
+            --font-heading: 'Impact', 'Oswald', sans-serif;
+            --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-main);
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent-orange);
+            text-shadow: var(--glow);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo-img {
+            height: 50px; /* Adjust size for navbar */
+            width: auto;
+            border-radius: 50%; /* Makes the square image circular if needed */
+            border: 2px solid var(--accent-orange);
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            display: none; /* Hidden on mobile, shown on desktop */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .brand-name { display: block; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #2a2a2a 0%, #121212 80%);
+            padding: 0 20px;
+        }
+
+        .hero-logo-img {
+            width: 280px; /* Larger size for hero section */
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 103, 0, 0.3); /* Adds a glow behind the image */
+            animation: breathe 4s infinite alternate;
+        }
+
+        @keyframes breathe {
+            from { transform: scale(1); box-shadow: 0 0 30px rgba(255, 103, 0, 0.3); }
+            to { transform: scale(1.05); box-shadow: 0 0 50px rgba(255, 103, 0, 0.6); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--accent-orange);
+            margin-bottom: 40px;
+            text-shadow: var(--glow);
+            letter-spacing: 1px;
+            font-family: var(--font-heading);
+        }
+
+        .btn-main {
+            padding: 15px 40px;
+            border: 2px solid var(--accent-orange);
+            background: transparent;
+            color: var(--accent-orange);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-main:hover {
+            background: var(--accent-orange);
+            color: var(--bg-dark);
+            box-shadow: var(--glow);
+        }
+
+        /* --- CONCEPT SECTION --- */
+        .section {
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--accent-gold);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .concept-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .concept-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .concept-grid { grid-template-columns: 1fr; }
+        }
+
+        /* --- MENU PREVIEW --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .menu-item {
+            background: #181818;
+            padding: 20px;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .menu-item h4 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-price {
+            color: var(--accent-orange);
+        }
+
+        .menu-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+            color: var(--text-muted);
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="The Porotta Foundry Logo" class="nav-logo-img">
+            <span class="brand-name">THE POROTTA FOUNDRY</span>
+        </div>
+        <div class="nav-links">
+            <a href="#about">The Forge</a>
+            <a href="#menu">Menu</a>
+            <a href="#locations">Locations</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="logo.jpg" alt="The Porotta Foundry Logo" class="hero-logo-img">
+        
+        <h1 style="display:none;">The Porotta Foundry</h1> 
+        
+        <p>FORGED IN MADURAI, LAYERED IN MALABAR</p>
+        <button class="btn-main" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+            Enter The Foundry
+        </button>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">Two Cities. One Forge.</h2>
+        <p style="color: #a0a0a0; max-width: 600px; margin: 0 auto;">
+            We don't just make bread; we engineer texture. From the soft, cloud-like buns of Madurai to the infinite, crispy layers of Kozhikode.
+        </p>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <h3>Madurai Bun</h3>
+                <p style="color: #ccc;">Thick. Fluffy. Golden.<br>Folded to trap air, grilled to absorb gravy.</p>
+            </div>
+            <div class="concept-card">
+                <h3>Malabar Layer</h3>
+                <p style="color: #ccc;">Thin. Crispy. Infinite.<br>Beaten to translucence, coiled for the crunch.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section" style="background-color: #181818;">
+        <h2 class="section-title">The Iron Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h4>Madurai Bun Porotta Set <span class="menu-price">$12</span></h4>
+                <p class="menu-desc">2 pcs Bun Porotta + Mutton Chukka + Empty Salna</p>
+            </div>
+            <div class="menu-item">
+                <h4>Malabar Classic Set <span class="menu-price">$14</span></h4>
+                <p class="menu-desc">3 pcs Layer Porotta + Beef Fry (Roasted Coconut) + Raita</p>
+            </div>
+            <div class="menu-item">
+                <h4>Kothu Foundry Special <span class="menu-price">$10</span></h4>
+                <p class="menu-desc">Minced Porotta on the griddle with egg, chicken, and spicy gravy.</p>
+            </div>
+            <div class="menu-item">
+                <h4>Kizhi (Steamed Bundle) <span class="menu-price">$15</span></h4>
+                <p class="menu-desc">Porotta soaked in beef roast, wrapped in banana leaf and steam-grilled.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">THE POROTTA FOUNDRY</div>
+        <p>Forging Authentic Tastes Globally.</p>
+        <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2026 The Porotta Foundry. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
